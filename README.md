@@ -14,67 +14,37 @@ The flow of the project is as follows:
 3. Get the Position and Orientation of the Aruco Marker using **cv2.aruco.estimatePoseSingleMarkers** --- The translational 
    vector will be later used to get the distance of the Aruco Marker from the Drone.
 4. Get the center of the Drone's camera
-5. Error can be calculated as:
+5. Calculate the Error, the errors in the X, Y, and Z axes can be calculated as follows:
    
-## Calculating Error for Marker Alignment
+      A.   Error in the X-axis: Error_x = CameraCenterX - MarkerCenterX
+      
+      B.   Error in the Y-axis: Error_y = CameraCenterY - MarkerCenterY
+      
+      C.   Error in the Z-axis: Error_z = Distance - 1.75
+      
+      - **Error_x**: The horizontal difference between the camera's center (`CameraCenterX`) and the marker's center (`MarkerCenterX`).
+      - **Error_y**: The vertical difference between the camera's center (`CameraCenterY`) and the marker's center (`MarkerCenterY`).
+      - **Error_z**: The difference between the actual distance to the marker (`Distance`) and the desired distance (`1.75` meters).
 
-The errors in the X, Y, and Z axes can be calculated as follows:
-
-### Formula:
-\[
-\text{Error}_x = \text{CameraCenterX} - \text{MarkerCenterX}
-\]
-\[
-\text{Error}_y = \text{CameraCenterY} - \text{MarkerCenterY}
-\]
-\[
-\text{Error}_z = \text{Distance} - 1.75
-\]
-
-### Explanation:
-- **Error\(_x\)**: The horizontal difference between the camera's center (\(CameraCenterX\)) and the marker's center (\(MarkerCenterX\)).
-- **Error\(_y\)**: The vertical difference between the camera's center (\(CameraCenterY\)) and the marker's center (\(MarkerCenterY\)).
-- **Error\(_z\)**: The difference between the actual distance to the marker (\(Distance\)) and the desired distance (\(1.75\) meters).
-
-These errors can be used for alignment and feedback control in robotics or vision-based navigation systems.
-
+These errors are used to accurtely track the Aruco Marker.
 
 #### Calculating Distance to the Marker
 
 The distance to the ArUco marker is calculated using the translation vector (`tvec`). The distance is derived as the Euclidean norm of the `tvec`, which represents the position of the marker relative to the camera:
+![distance of the aruco](https://github.com/EhtishamAshraf/ArucoFollowingDrone/blob/4e5d59b21460ec55a24e7cb632fc79da25173535/Images/distance_formula.png)
 
-\[
-\text{Distance} = \sqrt{tvec_x^2 + tvec_y^2 + tvec_z^2}
-\]
+where; `tvec_x`, `tvec_y`, `tvec_z` are the X, Y, Z components of the translation vector (`tvec`).
 
-Where:
-- \(tvec_x\), \(tvec_y\), \(tvec_z\) are the X, Y, Z components of the translation vector (`tvec`).
 
----
+#### Calculating the center of the Aruco Marker
+The center of the Aruco Marker can be calculated by taking the average of all the corners.
+![aruco center](https://github.com/EhtishamAshraf/ArucoFollowingDrone/blob/4e5d59b21460ec55a24e7cb632fc79da25173535/Images/aruco_center.png)
 
-#### Calculating the Center of the Marker
-
-The marker's center is calculated as the mean of the corner coordinates. Each marker has 4 corners, represented as a 4x2 array of (x, y) coordinates. The formula for the marker center:
-
-\[
-\text{CenterX} = \frac{\text{Corner1}_x + \text{Corner2}_x + \text{Corner3}_x + \text{Corner4}_x}{4}
-\]
-
-\[
-\text{CenterY} = \frac{\text{Corner1}_y + \text{Corner2}_y + \text{Corner3}_y + \text{Corner4}_y}{4}
-\]
-
-Where:
-- \(\text{Corner1}_x, \text{Corner2}_x, \text{Corner3}_x, \text{Corner4}_x\) are the x-coordinates of the marker's corners.
-- \(\text{Corner1}_y, \text{Corner2}_y, \text{Corner3}_y, \text{Corner4}_y\) are the y-coordinates of the marker's corners.
-
----
-
-   
+The block diagram of the system is shown below.
 ![block diagram](https://github.com/EhtishamAshraf/ArucoFollowingDrone/blob/b0d19a1f7c5dd784b1484c347183dc4f639fa1e5/Images/FLowchart.png)
 
 
-
 ## Hardware Setup
+The system's hardware is shown below
 ![Hardware Setup](https://github.com/EhtishamAshraf/ArucoFollowingDrone/blob/b0d19a1f7c5dd784b1484c347183dc4f639fa1e5/Images/Image1.jpg)
 
