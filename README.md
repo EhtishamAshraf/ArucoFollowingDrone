@@ -38,6 +38,7 @@ where; `tvec_x`, `tvec_y`, `tvec_z` are the X, Y, Z components of the translatio
 
 #### Calculating the center of the Aruco Marker
 The center of the Aruco Marker can be calculated by taking the average of all the corners.
+
 ![aruco center](https://github.com/EhtishamAshraf/ArucoFollowingDrone/blob/4e5d59b21460ec55a24e7cb632fc79da25173535/Images/aruco_center.png)
 
 The block diagram of the system is shown below.
