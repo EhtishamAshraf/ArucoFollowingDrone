@@ -1,6 +1,7 @@
 # ArUco Marker Detection and Tracking using AR Drone
 This repository contains an algorithm to Track the Aruco Marker with AR Drone 2.0 using PID Controller. Python has been used for programming the drone with ps_drone library. To open the ps_drone website: [click here](https://www.playsheep.de/drone/downloads.html) 
 
+**The ps_drone library has been updated with a custom move_all() function for smooth movement of the drone.**
 
 ### Demo Video
 You can watch the demo video of AR Drone tracking the Aruco Marker in real world by clicking on the below image
