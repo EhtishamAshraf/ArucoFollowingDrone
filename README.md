@@ -5,7 +5,7 @@ This repository contains an algorithm to Track the Aruco Marker with AR Drone 2.
 ### Demo Video
 You can watch the demo video of AR Drone tracking the Aruco Marker in real world by clicking on the below image
 
-[![Watch the video](https://github.com/EhtishamAshraf/ArucoFollowingDrone/blob/b0d19a1f7c5dd784b1484c347183dc4f639fa1e5/Images/drone.png)](https://youtu.be/UkY-DLqm0hI)
+[![Watch the video](https://github.com/EhtishamAshraf/ArucoFollowingDrone/blob/c25abcaccf74ba185d958678957f8a6b36fb66d2/Images/drone_jungle.png)](https://youtu.be/UkY-DLqm0hI)
 
 ## Algorithm's Logic
 The flow of the project is as follows:
@@ -46,5 +46,26 @@ The block diagram of the system is shown below.
 
 ## Hardware Setup
 The system's hardware is shown below
-![Hardware Setup](https://github.com/EhtishamAshraf/ArucoFollowingDrone/blob/b0d19a1f7c5dd784b1484c347183dc4f639fa1e5/Images/Image1.jpg)
 
+![Hardware Setup](https://github.com/EhtishamAshraf/ArucoFollowingDrone/blob/c25abcaccf74ba185d958678957f8a6b36fb66d2/Images/drone_setup.png)
+
+## Results
+The ps_drone library only works with python2, so make sure to install pip and numpy, and opencv for python2
+
+### MATLAB
+During the first phase of the project, the algorithm was tested on MATLAB. **Camera Calibrator** app of MATLAB was used for camera calibration in MATLAB
+
+![Matlab](https://github.com/EhtishamAshraf/ArucoFollowingDrone/blob/9aec3f104a6cf0c5605f08d6cd623814ee3e3d72/Images/Matlab_Aruco.png)
+
+### PYTHON
+Then during the second phase, python was used to control the Drone and detect the Aruco Marker
+
+![Python](https://github.com/EhtishamAshraf/ArucoFollowingDrone/blob/9aec3f104a6cf0c5605f08d6cd623814ee3e3d72/Images/Python_Aruco.png)
+
+#### Scripts
+1. Calibrate the camera with: drone_calibration.py
+2. Check if the drone is working with: Drone_takeoff.py
+3. Check if the drone's camera is working fine with: DroneCamera.py
+4. Detect and Track the Aruco with Drone with: Drone_ArucoTracking.py
+   
+Run the scripts as: python2 <script_name>.py
